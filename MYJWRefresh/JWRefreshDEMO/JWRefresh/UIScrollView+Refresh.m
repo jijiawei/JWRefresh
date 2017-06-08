@@ -27,6 +27,7 @@
     if (self.headerView == nil) {
         self.headerView = [[JWRefreshHeaderView alloc]initWithFrame:CGRectMake(0, -50, SW, 50)];
     }
+    
     [self addSubview:self.headerView];
     // 监听偏移量
     [self addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
@@ -43,11 +44,12 @@
 
 // 上拉加载
 - (void)jw_addFooterRefreshWithBlock:(footerRefresh)block{
-    
+
     self.footerBlock = block;
     if (self.footerView == nil) {
         self.footerView = [[JWRefreshFooterView alloc]initWithFrame:CGRectMake(0, self.frame.size.height, SW, 50)];
     }
+    NSLog(@"%@",self.footerView);
     [self addSubview:self.footerView];
 
     // 监听偏移量
@@ -103,6 +105,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     
     if ([keyPath isEqualToString:@"contentOffset"]) {
+        
         if (self.dragging) {
             if (self.contentOffset.y < 0) {// 处理下拉刷新
                 NSLog(@"%@",self.RefreshStatu);
@@ -116,14 +119,18 @@
             }else{// 处理上拉加载
                 
                 if (![self.RefreshStatu isEqualToString:@"JW_RefreshStatusLoading"]) {// 判断是否处于上拉加载中
-                    
-                    CGPoint offset = self.contentOffset;
-                    CGSize size = self.frame.size;
-                    CGSize contentSize = self.contentSize;
-                    float load_Y = offset.y + size.height - contentSize.height;// 根据这个值来判断是否到了tableView的最低点
+                
+                    CGFloat offsetY = self.contentOffset.y;
+                    CGFloat frameY = self.frame.size.height;
+                    CGFloat contentY = self.contentSize.height;
+                    float load_Y = offsetY + frameY - contentY;// 根据这个值来判断是否到了tableView的最低点
+                    if (frameY > contentY) {
+                        load_Y = offsetY;
+                    }
                     if (load_Y > 50) {// 准备上拉加载
                         NSLog(@"准备上拉加载了吗?");
                         [self getRefreshStatus:JW_RefreshStatusWillLoad];
+                        
                     }else{// 取消上拉加载
                         [self getRefreshStatus:JW_RefreshStatusCancelLoad];
                     }
@@ -135,9 +142,9 @@
             self.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
             self.headerBlock();
         }else if ([self.RefreshStatu isEqualToString:@"JW_RefreshStatusWillLoad"]){// 上拉加载
-            
+
             [self getRefreshStatus:JW_RefreshStatusLoading];
-            self.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
+            self.contentInset = UIEdgeInsetsMake(-50, 0, 0, 0);
             self.footerBlock();
         }
     }
@@ -157,7 +164,14 @@
     if ([keyPath isEqualToString:@"contentSize"]) {
         if (self.footerView) {
             CGSize contentSize = self.contentSize;
-            float load_y = contentSize.height;
+            CGFloat contentY = contentSize.height;
+            CGFloat frameY = self.frame.size.height;
+            NSLog(@"%f",contentY);
+            NSLog(@"%f",frameY);
+            float load_y = contentY;
+            if (frameY >= contentY) {
+                load_y = frameY;
+            }
             self.footerView.frame = CGRectMake(0, load_y, SW, 50);
         }
     }
