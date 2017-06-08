@@ -43,13 +43,13 @@
 
 // 上拉加载
 - (void)jw_addFooterRefreshWithBlock:(footerRefresh)block{
-
+    
     self.footerBlock = block;
     if (self.footerView == nil) {
         self.footerView = [[JWRefreshFooterView alloc]initWithFrame:CGRectMake(0, self.frame.size.height, SW, 50)];
     }
     [self addSubview:self.footerView];
-//    self.jw_loading = NO;
+
     // 监听偏移量
     [self addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:@"RefreshStatu" options:NSKeyValueObservingOptionNew context:nil];
@@ -116,7 +116,7 @@
             }else{// 处理上拉加载
                 
                 if (![self.RefreshStatu isEqualToString:@"JW_RefreshStatusLoading"]) {// 判断是否处于上拉加载中
-                
+                    
                     CGPoint offset = self.contentOffset;
                     CGSize size = self.frame.size;
                     CGSize contentSize = self.contentSize;

@@ -47,7 +47,6 @@
         self.refreshView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         self.refreshView.center = CGPointMake(SW/3-15, 25);
         self.refreshView.hidden = YES;
-        [self.refreshView startAnimating];
         [self addSubview:self.refreshView];
     }
     self.title.font = [UIFont systemFontOfSize:18];
@@ -69,6 +68,7 @@
         }else if (_type == JW_LoadShowTypeLoading) {
             self.img.hidden = YES;
             self.refreshView.hidden = NO;
+            [self.refreshView startAnimating];
         }else{
             self.img.hidden = NO;
             self.refreshView.hidden = YES;

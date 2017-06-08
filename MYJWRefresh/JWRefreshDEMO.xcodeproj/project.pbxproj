@@ -18,6 +18,7 @@
 		0F2938C91EDEBED1005AC5EA /* JWRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F2938C41EDEBED1005AC5EA /* JWRefreshFooterView.m */; };
 		0F2938CA1EDEBED1005AC5EA /* JWRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F2938C61EDEBED1005AC5EA /* JWRefreshHeaderView.m */; };
 		0F2938CB1EDEBED1005AC5EA /* UIScrollView+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F2938C81EDEBED1005AC5EA /* UIScrollView+Refresh.m */; };
+		0F852ABA1EE9238D009D68A7 /* UITableViewController+NoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F852AB91EE9238D009D68A7 /* UITableViewController+NoData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		0F2938C61EDEBED1005AC5EA /* JWRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWRefreshHeaderView.m; sourceTree = "<group>"; };
 		0F2938C71EDEBED1005AC5EA /* UIScrollView+Refresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Refresh.h"; sourceTree = "<group>"; };
 		0F2938C81EDEBED1005AC5EA /* UIScrollView+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Refresh.m"; sourceTree = "<group>"; };
+		0F852AB81EE9238D009D68A7 /* UITableViewController+NoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+NoData.h"; sourceTree = "<group>"; };
+		0F852AB91EE9238D009D68A7 /* UITableViewController+NoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+NoData.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,8 @@
 				0F2938C61EDEBED1005AC5EA /* JWRefreshHeaderView.m */,
 				0F2938C71EDEBED1005AC5EA /* UIScrollView+Refresh.h */,
 				0F2938C81EDEBED1005AC5EA /* UIScrollView+Refresh.m */,
+				0F852AB81EE9238D009D68A7 /* UITableViewController+NoData.h */,
+				0F852AB91EE9238D009D68A7 /* UITableViewController+NoData.m */,
 			);
 			path = JWRefresh;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 				0F2938931EDEBE36005AC5EA /* AppDelegate.m in Sources */,
 				0F2938C91EDEBED1005AC5EA /* JWRefreshFooterView.m in Sources */,
 				0F2938901EDEBE36005AC5EA /* main.m in Sources */,
+				0F852ABA1EE9238D009D68A7 /* UITableViewController+NoData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +543,7 @@
 				0F2938BA1EDEBE36005AC5EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0F2938BB1EDEBE36005AC5EA /* Build configuration list for PBXNativeTarget "JWRefreshDEMOTests" */ = {
 			isa = XCConfigurationList;
@@ -545,6 +552,7 @@
 				0F2938BD1EDEBE36005AC5EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0F2938BE1EDEBE36005AC5EA /* Build configuration list for PBXNativeTarget "JWRefreshDEMOUITests" */ = {
 			isa = XCConfigurationList;
@@ -553,6 +561,7 @@
 				0F2938C01EDEBE36005AC5EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
